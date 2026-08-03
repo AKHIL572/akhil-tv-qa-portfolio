@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* ── Pure near-black — premium, focused, no distractions ── */
+        --background: 240 10% 4%;
+        --foreground: 240 5% 94%;
+
+        --card: 240 8% 7%;
+        --card-foreground: 240 5% 94%;
+
+        --popover: 240 8% 7%;
+        --popover-foreground: 240 5% 94%;
+
+        /* ── Vivid indigo — developer / engineering authority ── */
+        --primary: 243 75% 65%;
+        --primary-foreground: 240 10% 4%;
+
+        --secondary: 240 6% 12%;
+        --secondary-foreground: 240 5% 78%;
+
+        --muted: 240 6% 10%;
+        --muted-foreground: 240 5% 48%;
+
+        /* ── Violet accent — pairs beautifully with indigo ── */
+        --accent: 270 67% 62%;
+        --accent-foreground: 240 5% 97%;
+
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 6% 14%;
+        --input: 240 6% 14%;
+        --ring: 243 75% 65%;
+
+        --radius: 0.625rem;
+
+        --highlight: 243 75% 65%;
+        --chart-1: 243 75% 65%;
+        --chart-2: 270 67% 62%;
+        --chart-3: 210 80% 60%;
+        --chart-4: 195 75% 55%;
+        --chart-5: 320 65% 60%;
+
+        --sidebar-background: 240 8% 6%;
+        --sidebar-foreground: 240 5% 78%;
+        --sidebar-primary: 243 75% 65%;
+        --sidebar-primary-foreground: 240 10% 4%;
+        --sidebar-accent: 240 6% 10%;
+        --sidebar-accent-foreground: 240 5% 78%;
+        --sidebar-border: 240 6% 14%;
+        --sidebar-ring: 243 75% 65%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        background-image:
+            radial-gradient(ellipse 80% 50% at 20% -10%, hsl(243 75% 65% / 0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 80% 110%, hsl(270 67% 62% / 0.06) 0%, transparent 60%);
+        background-attachment: fixed;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.02em;
+    }
+}
+
+@layer utilities {
+    .font-mono-code {
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .font-display {
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Indigo → Violet — engineering authority gradient */
+    .gradient-text {
+        @apply bg-clip-text text-transparent;
+        background-image: linear-gradient(135deg, hsl(243 75% 72%), hsl(270 67% 68%));
+    }
+
+    .glow-primary {
+        box-shadow: 0 0 40px -8px hsl(243 75% 65% / 0.4);
+    }
+
+    /* Subtle noise texture overlay */
+    .noise-overlay::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .card-hover {
+        @apply transition-all duration-300;
+        border: 1px solid hsl(240 6% 14%);
+    }
+
+    .card-hover:hover {
+        transform: translateY(-3px);
+        border-color: hsl(243 75% 65% / 0.3);
+        box-shadow:
+            0 4px 24px -4px hsl(243 75% 65% / 0.15),
+            0 0 0 1px hsl(243 75% 65% / 0.1);
+    }
+
+    /* Tag / badge pill style */
+    .tag-pill {
+        @apply text-xs font-mono px-2.5 py-1 rounded-md;
+        background: hsl(243 75% 65% / 0.08);
+        color: hsl(243 75% 78%);
+        border: 1px solid hsl(243 75% 65% / 0.2);
+    }
+
+    .tag-pill:hover {
+        background: hsl(243 75% 65% / 0.15);
+    }
+
+    /* Section label */
+    .section-label {
+        @apply font-mono text-xs tracking-widest uppercase;
+        color: hsl(243 75% 68%);
+    }
+
+    /* Animated underline for nav */
+    .nav-link {
+        @apply relative text-sm text-muted-foreground transition-colors duration-200;
+    }
+
+    .nav-link::after {
+        content: '';
+        @apply absolute -bottom-0.5 left-0 w-0 h-px transition-all duration-300;
+        background: hsl(var(--primary));
+    }
+
+    .nav-link:hover {
+        @apply text-foreground;
+    }
+
+    .nav-link:hover::after {
+        @apply w-full;
+    }
+
+    /* Gradient border card effect */
+    .gradient-border {
+        position: relative;
+        background: hsl(240 8% 7%);
+        border-radius: 0.75rem;
+    }
+
+    .gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        background: linear-gradient(135deg, hsl(243 75% 65% / 0.3), transparent 50%, hsl(270 67% 62% / 0.2));
+        border-radius: inherit;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    /* Fade in animation */
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Typewriter cursor blink */
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+    }
+
+    .cursor-blink {
+        animation: blink 1s step-end infinite;
+    }
+}
