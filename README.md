@@ -1,6 +1,6 @@
 # Akhil T V — Personal Portfolio
 
-A personal portfolio website for **Akhil T V**, a Data Scientist & ML Engineer. The site showcases projects, skills, and a contact form, and is built as a modern single-page application.
+A personal portfolio website for **Akhil T V**, a QA Engineer & Software Developer. The site showcases projects, skills, and a contact form, and is built as a modern single-page application.
 
 ## 🌐 Live Site
 
