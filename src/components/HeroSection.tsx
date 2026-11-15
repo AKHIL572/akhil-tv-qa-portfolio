@@ -1,7 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, Download, Code2, ShieldCheck, CheckCircle2, Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import profileImg from "@/assets/profile.jpg";
-import resumePdf from "@/assets/Akhil_TV_Resume.pdf";
+import resumePdf from "@/assets/Akhil_TV_QA_Resume.pdf";
 
 const ROLES = [
     "QA Engineer",
